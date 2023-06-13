@@ -1,6 +1,7 @@
 import java.util.Scanner;
 import java.util.*;
 public class Macchiato {
+    private List<Procedura> procedury;
     private Instrukcja instrukcje;
 
     private Boolean czyBlad;
@@ -16,7 +17,14 @@ public class Macchiato {
         this.scanner = null;
         this.odpluskwiacz = new Odpluskwiacz(this);
     }
-
+    public Procedura dajProcedure(String szukanaNazwa) {
+        int iloscProcedur = this.procedury.size();
+        for (int i = 0; i < iloscProcedur; i++) {
+            Procedura obecnaBadana = this.procedury.get(i);
+            if (obecnaBadana.getNaglowek().getNazwa().compareTo(szukanaNazwa) == 0) return obecnaBadana;
+        }
+        throw new RuntimeException("Nie ma procedury");
+    }
     public Odpluskwiacz getOdpluskwiacz() {
         return odpluskwiacz;
     }
