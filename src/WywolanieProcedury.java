@@ -11,11 +11,22 @@ public class WywolanieProcedury extends InstrukcjaBlokowa{
             System.out.println("WywolanieProcedury");
             this.getProgram().setCzyBladTrue();
         }
+
         if (this.argumenty.size() != this.wywolywana.getNaglowek().getArgumenty().size()) {
             System.out.println("WywolanieProcedury");
             this.getProgram().setCzyBladTrue();
         }
+
+        for (int i = 0; i < this.wywolywana.getNaglowek().getArgumenty().size(); i++) {
+            char zmiennaDoAktywowania = this.wywolywana.getNaglowek().getArgumenty().get(i);
+            this.setZmienneAktywne(zmiennaDoAktywowania, true);
+        }
+
+
     }
 
-
+    @Override
+    public String getImie() {
+        return("WywolanieProcedury");
+    }
 }
