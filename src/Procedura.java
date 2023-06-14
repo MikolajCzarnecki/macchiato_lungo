@@ -4,7 +4,7 @@ public class Procedura {
 
     private Macchiato program;
     private List<Instrukcja> instrukcje;
-    public Procedura(Macchiato program ,String nazwa, List<Character> argumenty) {
+    public Procedura(Macchiato program, String nazwa, List<Character> argumenty) {
         this.program = program;
         this.naglowek = new Naglowek(nazwa, this, argumenty);
         this.instrukcje = new LinkedList<Instrukcja>();

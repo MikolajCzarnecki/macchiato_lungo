@@ -28,9 +28,7 @@ public class WywolanieProcedury extends InstrukcjaBlokowa{
         for (int i = 0; i < this.wywolywana.getInstrukcje().size(); i++) {
             Instrukcja doDodania = this.wywolywana.getInstrukcje().get(i);
             doDodania.setBlokWyzej(this);
-
         }
-
     }
 
     @Override
@@ -91,6 +89,28 @@ public class WywolanieProcedury extends InstrukcjaBlokowa{
     @Override
     public void wykonaj() {
         this.wykonajDeklaracje();
-        int rozmiar =
+        int rozmiar = this.instrukcje.size();
+        Odpluskwiacz odpluskwiacz = this.getProgram().getOdpluskwiacz();
+        int i = 0;
+        while (
+                i < rozmiar &&
+                        !this.getProgram().getCzyBlad() &&
+                        !this.getProgram().getCzyZakonczonyProgram()
+        ) {
+            try {
+                odpluskwiacz.oflaguj(this.instrukcje.get(i));
+                i++;
+            } catch (RuntimeException e) {
+                System.out.println(e.getMessage());
+                if (this.getBlokWyzej() != null) throw new RuntimeException("");
+                if (!this.getProgram().getCzyBlad()) {
+                    System.out.println(e.getMessage());
+                    this.wypiszWszystkie();
+                    this.getProgram().setCzyBladTrue();
+                    return;
+                }
+            }
+        }
+        this.wyczyscLokalne();
     }
 }

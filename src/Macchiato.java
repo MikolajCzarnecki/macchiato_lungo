@@ -2,7 +2,6 @@ import java.util.Scanner;
 import java.util.*;
 public class Macchiato {
     private List<Procedura> procedury;
-    private Instrukcja instrukcje;
 
     private Boolean czyBlad;
 
