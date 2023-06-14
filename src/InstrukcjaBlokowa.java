@@ -1,7 +1,11 @@
+import java.util.List;
+
 public abstract class InstrukcjaBlokowa extends Instrukcja{
     private Boolean[] zmienneAktywne;
     private Instrukcja doWykonania;
     private int[] zmienne;
+
+    private List<Procedura> procedury;
 
     public InstrukcjaBlokowa(InstrukcjaBlokowa blokWyzej, Macchiato program) {
         super(blokWyzej, program);
@@ -12,7 +16,21 @@ public abstract class InstrukcjaBlokowa extends Instrukcja{
         this.zmienne = new int[26];
         this.doWykonania = null;
     }
-
+    public Procedura dajProcedure(String szukanaNazwa) {
+        int iloscProcedur = this.procedury.size();
+        for (int i = 0; i < iloscProcedur; i++) {
+            Procedura obecnaBadana = this.procedury.get(i);
+            if (obecnaBadana.getNaglowek().getNazwa().compareTo(szukanaNazwa) == 0) return obecnaBadana;
+        }
+        if (this.getBlokWyzej() == null) {
+            throw new RuntimeException("Nie ma procedury");
+        } else {
+            return this.getBlokWyzej().dajProcedure(szukanaNazwa);
+        }
+    }
+    public List<Procedura> getProcedury() {
+        return this.procedury;
+    }
     public int[] getZmienne() {return this.zmienne;}
     public abstract int getZmienna(char zmienna);
     public abstract void setZmienna(char zmienna, int wartosc);

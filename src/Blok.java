@@ -37,10 +37,10 @@ public class Blok extends InstrukcjaBlokowa{
         }
     }
 
-    public void dodajDeklaracje(Deklaracja deklaracja) {
-        deklaracja.setBlokWyzej(this);
-        deklaracja.setProgram(this.getProgram());
-        this.deklaracje.add(deklaracja);
+    public void dodajDeklaracjeLubProcedure(InstrukcjaDeklaracyjna deklaracjaprocedura) {
+        deklaracjaprocedura.setBlokWyzej(this);
+        deklaracjaprocedura.setProgram(this.getProgram());
+        this.deklaracje.add(deklaracjaprocedura);
     }
 
     public void dodajInstrukcje(Instrukcja instrukcja) {

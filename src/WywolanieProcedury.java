@@ -7,7 +7,7 @@ public class WywolanieProcedury extends InstrukcjaBlokowa{
     public WywolanieProcedury(List<Wyrazenie> argumenty, String nazwa, InstrukcjaBlokowa blokWyzej, Macchiato program) {
         super(blokWyzej, program);
         try{
-            this.wywolywana = this.getProgram().dajProcedure(nazwa);
+            this.wywolywana = this.getBlokWyzej().dajProcedure(nazwa);
         } catch(RuntimeException e) {
             System.out.println("WywolanieProcedury");
             this.getProgram().setCzyBladTrue();

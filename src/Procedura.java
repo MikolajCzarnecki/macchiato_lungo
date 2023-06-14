@@ -4,10 +4,11 @@ public class Procedura {
 
     private Macchiato program;
     private List<Instrukcja> instrukcje;
-    public Procedura(Macchiato program, String nazwa, List<Character> argumenty) {
+    public Procedura(Macchiato program, String nazwa, List<Character> argumenty, List<Instrukcja> instrukcje) {
         this.program = program;
         this.naglowek = new Naglowek(nazwa, this, argumenty);
-        this.instrukcje = new LinkedList<Instrukcja>();
+        this.instrukcje = instrukcje;
+
     }
 
     public Naglowek getNaglowek() {

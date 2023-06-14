@@ -1,4 +1,4 @@
-public class Deklaracja extends InstrukcjaWBloku{
+public class Deklaracja extends InstrukcjaDeklaracyjna{
     private char zmienna;
     private Wyrazenie wartosc;
 

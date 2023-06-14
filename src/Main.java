@@ -45,6 +45,7 @@ public class Main {
 //        program1.wykonaj(b1, true);
 //    }
         Macchiato testProc = new Macchiato();
-        
+        Blok b1 = new Blok(null, testProc);
+        Procedura p1 = new Procedura(testProc, "simpleadd",  )
     }
 }
