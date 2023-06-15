@@ -9,13 +9,11 @@ public class WywolanieProcedury extends InstrukcjaBlokowa{
         try{
             this.wywolywana = this.getBlokWyzej().dajProcedure(nazwa);
         } catch(RuntimeException e) {
-            System.out.println("WywolanieProcedury");
-            this.getProgram().setCzyBladTrue();
+            throw (new RuntimeException("WywolanieProcedury"));
         }
 
         if (argumenty.size() != this.wywolywana.getNaglowek().getArgumenty().size()) {
-            System.out.println("WywolanieProcedury");
-            this.getProgram().setCzyBladTrue();
+            throw (new RuntimeException("WywolanieProcedury"));
         }
 
         this.deklaracje = new LinkedList<Deklaracja>();
