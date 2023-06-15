@@ -14,7 +14,7 @@ public class Deklaracja extends InstrukcjaDeklaracyjna{
     @Override
     public void wykonaj () {
         int nrZmiennej = (int) this.zmienna - (int) 'a';
-        if (this.getBlokWyzej().getZmienneAktywne()[nrZmiennej]) {System.out.println("NADAL AKTYWNA"); throw new RuntimeException("Deklaracja");}
+        if (this.getBlokWyzej().getZmienneAktywne()[nrZmiennej]) {throw new RuntimeException("Deklaracja");}
         else {
             this.getBlokWyzej().setZmienneAktywne(this.zmienna, true);
             try {
@@ -23,7 +23,6 @@ public class Deklaracja extends InstrukcjaDeklaracyjna{
                 throw new RuntimeException("Deklaracja");
             }
             try {
-                System.out.println("Zmiena " + this.zmienna + " wartosc " + this.wartosc.oblicz(this.getBlokWyzej()));
                 this.getBlokWyzej().setZmienna(this.zmienna, this.wartosc.oblicz(this.getBlokWyzej()));
             } catch (RuntimeException e) {
                 throw new RuntimeException("Deklaracja");

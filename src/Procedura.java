@@ -8,8 +8,6 @@ public class Procedura {
         this.program = program;
         this.naglowek = new Naglowek(nazwa, this, argumenty);
         this.instrukcje = instrukcje;
-        System.out.println("Ile instrukcji v2 " + instrukcje.size());
-
     }
 
     public Naglowek getNaglowek() {

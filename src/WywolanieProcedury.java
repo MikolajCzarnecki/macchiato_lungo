@@ -18,7 +18,6 @@ public class WywolanieProcedury extends InstrukcjaBlokowa{
         } catch(RuntimeException e) {
             throw (new RuntimeException("WywolanieProcedury"));
         }
-        System.out.println("PROCEDURA DANA");
         if (this.argumenty.size() != this.wywolywana.getNaglowek().getArgumenty().size()) {
             throw (new RuntimeException("WywolanieProcedury"));
         }
@@ -95,11 +94,8 @@ public class WywolanieProcedury extends InstrukcjaBlokowa{
 
     @Override
     public void wykonaj() {
-        System.out.println("PRZED ZBUDOWANIEM BLOKU");
         this.zbudujBlok();
-        System.out.println("PRZED DEKLARACJAMI, rozmiar deklaracji "+ this.deklaracje.size());
         this.wykonajDeklaracje();
-        System.out.println("instrukcje " + this.instrukcje.size());
         int rozmiar = this.instrukcje.size();
         Odpluskwiacz odpluskwiacz = this.getProgram().getOdpluskwiacz();
         int i = 0;
@@ -109,7 +105,6 @@ public class WywolanieProcedury extends InstrukcjaBlokowa{
                         !this.getProgram().getCzyZakonczonyProgram()
         ) {
             try {
-                System.out.println("wykonywanie " + this.instrukcje.get(i).getClass().getName());
                 this.instrukcje.get(i).setBlokWyzej(this);
                 this.instrukcje.get(i).setProgram(this.getProgram());
                 odpluskwiacz.oflaguj(this.instrukcje.get(i));

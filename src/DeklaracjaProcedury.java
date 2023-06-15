@@ -21,8 +21,7 @@ public class DeklaracjaProcedury extends InstrukcjaDeklaracyjna{
         this.instrukcje = instrukcje;
     }
 
-    public void dodajInstrukcje(Instrukcja doDodania) {this.instrukcje.add(doDodania);
-    System.out.println("Dodano instrukcje");}
+    public void dodajInstrukcje(Instrukcja doDodania) {this.instrukcje.add(doDodania);}
     public void dodajArgument(Character doDodania) {
         for (int i = 0; i < this.argumenty.size(); i++) {
             if (this.argumenty.get(i) == doDodania) {
@@ -43,7 +42,6 @@ public class DeklaracjaProcedury extends InstrukcjaDeklaracyjna{
             if (obecnaBadana.getNaglowek().getNazwa().compareTo(this.nazwa) == 0)
                 throw(new RuntimeException("DeklaracjaProcedury"));
         }
-        System.out.println("ile instrukcji w procedurze" + this.instrukcje.size());
         this.zadeklarowanaProcedura = new Procedura(this.getProgram(), this.nazwa, this.argumenty, this.instrukcje);
         this.getBlokWyzej().addProcedura(this.zadeklarowanaProcedura);
     }
