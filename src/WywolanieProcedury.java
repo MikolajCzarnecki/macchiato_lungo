@@ -33,6 +33,7 @@ public class WywolanieProcedury extends InstrukcjaBlokowa{
         for (int i = 0; i < this.wywolywana.getInstrukcje().size(); i++) {
             Instrukcja doDodania = this.wywolywana.getInstrukcje().get(i);
             doDodania.setBlokWyzej(this);
+            this.instrukcje.add(doDodania);
         }
     }
     @Override
