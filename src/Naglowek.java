@@ -23,6 +23,7 @@ public class Naglowek {
                 }
             }
         }
+        this.argumenty = argumenty;
     }
 
     public String getNazwa() {

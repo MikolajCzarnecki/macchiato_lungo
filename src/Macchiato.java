@@ -48,7 +48,7 @@ public class Macchiato {
     }
 
     public void wykonaj(Blok blok, Boolean odpluskwianie) {
-
+        blok.setProgram(this);
         this.czyOdpluskwianie = odpluskwianie;
         if (odpluskwianie) this.scanner = new Scanner(System.in);
         blok.wykonaj();

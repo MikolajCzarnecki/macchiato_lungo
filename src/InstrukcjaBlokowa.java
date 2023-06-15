@@ -1,4 +1,4 @@
-import java.util.List;
+import java.util.*;
 
 public abstract class InstrukcjaBlokowa extends Instrukcja{
     private Boolean[] zmienneAktywne;
@@ -7,20 +7,23 @@ public abstract class InstrukcjaBlokowa extends Instrukcja{
 
     private List<Procedura> procedury;
 
-    public InstrukcjaBlokowa(InstrukcjaBlokowa blokWyzej, Macchiato program) {
-        super(blokWyzej, program);
+    public InstrukcjaBlokowa() {
+        super(null, null);
         this.zmienneAktywne = new Boolean[26];
         for (int i = 0; i < 26; i++) {
             this.zmienneAktywne[i] = false;
         }
         this.zmienne = new int[26];
         this.doWykonania = null;
+        this.procedury = new LinkedList<Procedura>();
     }
     public Procedura dajProcedure(String szukanaNazwa) {
         int iloscProcedur = this.procedury.size();
         for (int i = 0; i < iloscProcedur; i++) {
             Procedura obecnaBadana = this.procedury.get(i);
-            if (obecnaBadana.getNaglowek().getNazwa().compareTo(szukanaNazwa) == 0) return obecnaBadana;
+            if (obecnaBadana.getNaglowek().getNazwa().compareTo(szukanaNazwa) == 0) {
+                return obecnaBadana;
+            }
         }
         if (this.getBlokWyzej() == null) {
             throw new RuntimeException("Nie ma procedury");
@@ -30,6 +33,9 @@ public abstract class InstrukcjaBlokowa extends Instrukcja{
     }
     public List<Procedura> getProcedury() {
         return this.procedury;
+    }
+    public void addProcedura(Procedura procedura) {
+        this.procedury.add(procedura);
     }
     public int[] getZmienne() {return this.zmienne;}
     public abstract int getZmienna(char zmienna);

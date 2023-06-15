@@ -23,6 +23,7 @@ public class Deklaracja extends InstrukcjaDeklaracyjna{
                 throw new RuntimeException("Deklaracja");
             }
             try {
+                System.out.println("Zmiena " + this.zmienna + " wartosc " + this.wartosc.oblicz(this.getBlokWyzej()));
                 this.getBlokWyzej().setZmienna(this.zmienna, this.wartosc.oblicz(this.getBlokWyzej()));
             } catch (RuntimeException e) {
                 throw new RuntimeException("Deklaracja");

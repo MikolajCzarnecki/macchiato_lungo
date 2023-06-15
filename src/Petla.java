@@ -5,8 +5,8 @@ public class Petla extends InstrukcjaBlokowa{
     private int wartoscZmiennej = 0;
     private List<Instrukcja> instrukcje;
     private int ileRazy;
-    public Petla(char zmienna, Wyrazenie wyrazenie, InstrukcjaBlokowa blokWyzej) {
-        super(blokWyzej, blokWyzej.getProgram());
+    public Petla(char zmienna, Wyrazenie wyrazenie) {
+        super();
         this.zmienna = zmienna;
         this.wyrazenie = wyrazenie;
         this.instrukcje = new LinkedList<>();
@@ -19,8 +19,6 @@ public class Petla extends InstrukcjaBlokowa{
     }
 
     public void dodajDoPetli(Instrukcja instrukcja) {
-        instrukcja.setBlokWyzej(this);
-        instrukcja.setProgram(this.getProgram());
         this.instrukcje.add(instrukcja);
     }
     @Override
@@ -62,6 +60,8 @@ public class Petla extends InstrukcjaBlokowa{
             this.wartoscZmiennej = i;
             for (int j = 0; j < ileInstrukcji; j++) {
                 if (this.getProgram().getCzyZakonczonyProgram()) return;
+                this.instrukcje.get(j).setBlokWyzej(this);
+                this.instrukcje.get(j).setProgram(this.getProgram());
                 odpluskwiacz.oflaguj(this.instrukcje.get(j));
             }
         }

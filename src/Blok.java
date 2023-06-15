@@ -1,12 +1,12 @@
 import java.util.*;
 public class Blok extends InstrukcjaBlokowa{
-    private List<Deklaracja> deklaracje;
+    private List<InstrukcjaDeklaracyjna> deklaracje;
     private List<Instrukcja> instrukcje;
 
-    public Blok(InstrukcjaBlokowa blokWyzej, Macchiato program) {
-        super(blokWyzej, program);
+    public Blok() {
+        super();
 
-        this.deklaracje = new LinkedList<Deklaracja>();
+        this.deklaracje = new LinkedList<InstrukcjaDeklaracyjna>();
         this.instrukcje = new LinkedList<Instrukcja>();
     }
     @Override
@@ -38,16 +38,10 @@ public class Blok extends InstrukcjaBlokowa{
     }
 
     public void dodajDeklaracjeLubProcedure(InstrukcjaDeklaracyjna deklaracjaprocedura) {
-        deklaracjaprocedura.setBlokWyzej(this);
-        deklaracjaprocedura.setProgram(this.getProgram());
         this.deklaracje.add(deklaracjaprocedura);
     }
 
     public void dodajInstrukcje(Instrukcja instrukcja) {
-        if (instrukcja.getBlokWyzej() == null) {
-            instrukcja.setBlokWyzej(this);
-            instrukcja.setProgram(this.getProgram());
-        }
         this.instrukcje.add(instrukcja);
     }
     @Override
@@ -56,6 +50,8 @@ public class Blok extends InstrukcjaBlokowa{
         int i = 0;
         while (i < rozmiar && !this.getProgram().getCzyBlad()) {
             try {
+                this.deklaracje.get(i).setBlokWyzej(this);
+                this.deklaracje.get(i).setProgram(this.getProgram());
                 this.deklaracje.get(i).wykonaj();
             } catch (RuntimeException e) {
                 if (this.getBlokWyzej() != null) throw new RuntimeException("Runtime exception wyzej");
@@ -89,6 +85,8 @@ public class Blok extends InstrukcjaBlokowa{
                 !this.getProgram().getCzyZakonczonyProgram()
         ) {
             try {
+                this.instrukcje.get(i).setBlokWyzej(this);
+                this.instrukcje.get(i).setProgram(this.getProgram());
                 odpluskwiacz.oflaguj(this.instrukcje.get(i));
                 i++;
             } catch (RuntimeException e) {
