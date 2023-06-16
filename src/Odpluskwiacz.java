@@ -25,6 +25,12 @@ public class Odpluskwiacz {
                 int jakGleboko = this.program.getScanner().nextInt();
                 instrukcja.getBlokWyzej().wezZmienneZWyzszegoPoziomu(jakGleboko);
                 this.oflaguj(instrukcja);
+                break;
+            case 'm':
+                String fileToWrite = this.program.getScanner().nextLine();
+                instrukcja.getBlokWyzej().wypiszDoPliku(fileToWrite.trim());
+                this.oflaguj(instrukcja);
+                break;
         }
     }
     public void oflaguj(Instrukcja instrukcja) {

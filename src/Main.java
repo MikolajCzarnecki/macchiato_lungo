@@ -57,7 +57,7 @@ public class Main {
         b1.dodajDeklaracjeLubProcedure(p1);
         Deklaracja d1 = new Deklaracja('c', new Stala(13));
         b1.dodajDeklaracjeLubProcedure(d1);
-        b1.dodajInstrukcje(new WywolanieProcedury("wypisz",List.of(new Zmienna('c'))));
-        testProc.wykonaj(b1, false);
+        b1.dodajInstrukcje(new WywolanieProcedury("wypisz", List.of(new Zmienna('c'))));
+        testProc.wykonaj(b1, true);
     }
 }

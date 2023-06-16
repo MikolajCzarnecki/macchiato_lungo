@@ -1,4 +1,5 @@
 import java.util.*;
+import java.io.*;
 
 public abstract class InstrukcjaBlokowa extends Instrukcja{
     private Boolean[] zmienneAktywne;
@@ -68,5 +69,42 @@ public abstract class InstrukcjaBlokowa extends Instrukcja{
                 System.out.println(zmienna + " - " + this.getZmienne()[i]);
             }
         }
+
+
+    }
+    public void wypiszDoPliku(String nazwa){
+        File doWpisania = new File(nazwa);
+        FileWriter skryba = null;
+        try {
+            skryba = new FileWriter(doWpisania);
+            skryba.write("ZMIENNE:\n");
+            for (int i = 0; i < 26; i++) {
+                if (this.getZmienneAktywne()[i]) {
+                    char zmienna = (char) (i + (int) 'a');
+                    skryba.write(zmienna + " - " + this.getZmienne()[i] + "\n");
+                }
+            }
+            skryba.write("\n\nPROCEDURY:\n");
+            int i = 0;
+            while (i < this.getProcedury().size()) {
+                String nazwaProcedury = this.getProcedury().get(i).getNaglowek().getNazwa();
+                skryba.write(" " + nazwaProcedury + ":\n");
+                int j = 0;
+                while (j < this.getProcedury().get(i).getNaglowek().getArgumenty().size()) {
+                    skryba.write("-  " + this.getProcedury().get(i).getNaglowek().getArgumenty().get(j) + "\n");
+                    j++;
+                }
+                i++;
+            }
+        } catch (IOException e) {
+            System.out.println("BUG W PISANIU");
+        } finally {
+            try {
+                skryba.close();
+            } catch (IOException e) {
+                System.out.println("BUG W PISANIU");
+            }
+        }
+
     }
 }
