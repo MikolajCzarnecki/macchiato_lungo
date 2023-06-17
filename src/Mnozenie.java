@@ -12,4 +12,7 @@ public class Mnozenie extends OperacjaArytmetyczna{
         return (this.s1.oblicz(blok) * this.s2.oblicz(blok));
     }
 
+    public static Mnozenie of(Wyrazenie czynnik1, Wyrazenie czynnik2) {
+        return new Mnozenie(czynnik1, czynnik2);
+    }
 }

@@ -16,4 +16,7 @@ public class Dzielenie extends OperacjaArytmetyczna{
         return (this.dzielna.oblicz(blok) / obecnyDzielnik);
     }
 
+    public static Dzielenie of(Wyrazenie dzielna, Wyrazenie dzielnik) {
+        return new Dzielenie(dzielna, dzielnik);
+    }
 }

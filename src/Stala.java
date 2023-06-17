@@ -9,4 +9,8 @@ public class Stala extends Wyrazenie{
     public int oblicz(InstrukcjaBlokowa blok) {
         return (this.wartosc);
     }
+
+    public static Stala of(int wart) {
+        return new Stala(wart);
+    }
 }

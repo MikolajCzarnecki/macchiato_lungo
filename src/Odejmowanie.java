@@ -11,4 +11,8 @@ public class Odejmowanie extends OperacjaArytmetyczna{
         this.setBlok(blok);
         return (this.odjemna.oblicz(blok) - this.odjemnik.oblicz(blok));
     }
+
+    public static Odejmowanie of(Wyrazenie o1, Wyrazenie o2) {
+        return new Odejmowanie(o1, o2);
+    }
 }

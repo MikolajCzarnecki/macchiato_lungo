@@ -16,4 +16,8 @@ public class Modulo extends OperacjaArytmetyczna{
         }
         return (this.dzielna.oblicz(blok) % obecnyDzielnik);
     }
+
+    public static Modulo of(Wyrazenie d1, Wyrazenie d2){
+        return new Modulo(d1, d2);
+    }
 }

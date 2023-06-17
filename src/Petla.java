@@ -5,11 +5,11 @@ public class Petla extends InstrukcjaBlokowa{
     private int wartoscZmiennej = 0;
     private List<Instrukcja> instrukcje;
     private int ileRazy;
-    public Petla(char zmienna, Wyrazenie wyrazenie) {
+    public Petla(char zmienna, Wyrazenie wyrazenie, List<Instrukcja> instrukcje) {
         super();
         this.zmienna = zmienna;
         this.wyrazenie = wyrazenie;
-        this.instrukcje = new LinkedList<>();
+        this.instrukcje = instrukcje;
         this.setZmienneAktywne(zmienna, true);
     }
 

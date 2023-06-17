@@ -13,4 +13,7 @@ public class Dodawanie extends OperacjaArytmetyczna{
         return (this.s1.oblicz(blok) + this.s2.oblicz(blok));
     }
 
+    public static Dodawanie of(Wyrazenie skladnik1, Wyrazenie skladnik2) {
+        return new Dodawanie(skladnik1, skladnik2);
+    }
 }

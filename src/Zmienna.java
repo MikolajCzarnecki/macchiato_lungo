@@ -12,4 +12,7 @@ public class Zmienna extends Wyrazenie{
         return this.getBlok().getZmienna(nazwa);
     }
 
+    public static Zmienna of(char nazwa) {
+        return new Zmienna(nazwa);
+    }
 }
