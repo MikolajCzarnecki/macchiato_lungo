@@ -8,32 +8,39 @@ public class BudowniczyBlokow {
     public Blok zbuduj() {
         return this.glownyBlok;
     }
-    public void dodajDeklaracje( char zmienna, Wyrazenie wartosc) {
+    public BudowniczyBlokow dodajDeklaracje( char zmienna, Wyrazenie wartosc) {
         this.glownyBlok.dodajDeklaracjeLubProcedure(new Deklaracja(zmienna, wartosc));
+        return this;
     }
 
-    public void dodajWypisanie(Wyrazenie wyrazenie) {
+    public BudowniczyBlokow dodajWypisanie(Wyrazenie wyrazenie) {
         this.glownyBlok.dodajInstrukcje(new Wypisz(wyrazenie));
+        return this;
     }
 
-    public void dodajDeklaracjeProcedury(String nazwa, List<Character> listaArgum, Blok instrukcje) {
+    public BudowniczyBlokow dodajDeklaracjeProcedury(String nazwa, List<Character> listaArgum, Blok instrukcje) {
         this.glownyBlok.dodajDeklaracjeLubProcedure(new DeklaracjaProcedury(nazwa, listaArgum, List.of(instrukcje)));
+        return this;
     }
 
-    public void dodajWarunkowa(Wyrazenie wyr1, OpLog oplog, Wyrazenie wyr2,
+    public BudowniczyBlokow dodajWarunkowa(Wyrazenie wyr1, OpLog oplog, Wyrazenie wyr2,
                                Instrukcja jesliTrue, Instrukcja jesliFalse) {
         this.glownyBlok.dodajInstrukcje(new Warunkowa(wyr1, oplog, wyr2, jesliTrue, jesliFalse));
+        return this;
     }
 
-    public void dodajPrzypisanie(char zmienna, Wyrazenie wyrazenie) {
+    public BudowniczyBlokow dodajPrzypisanie(char zmienna, Wyrazenie wyrazenie) {
         this.glownyBlok.dodajInstrukcje(new Przypisanie(zmienna, wyrazenie));
+        return this;
     }
 
-    public void dodajPetle(char zmienna, Wyrazenie wyrazenie, Blok instrukcje) {
+    public BudowniczyBlokow dodajPetle(char zmienna, Wyrazenie wyrazenie, Blok instrukcje) {
         this.glownyBlok.dodajInstrukcje(new Petla(zmienna, wyrazenie, List.of(instrukcje)));
+        return this;
     }
 
-    public void dodajWywolanieProcedury(String nazwa, List<Wyrazenie> argumenty) {
+    public BudowniczyBlokow dodajWywolanieProcedury(String nazwa, List<Wyrazenie> argumenty) {
         this.glownyBlok.dodajInstrukcje(new WywolanieProcedury(nazwa, argumenty));
+        return this;
     }
 }

@@ -46,18 +46,8 @@ public class Main {
 //        program1.wykonaj(b1, true);
 //    }
         Macchiato testProc = new Macchiato();
-        Blok b1 = new Blok();
-        DeklaracjaProcedury p1 = new DeklaracjaProcedury("wypisz",
-                new LinkedList<Character>(), new LinkedList<Instrukcja>());
-        p1.dodajArgument('a');
-        p1.dodajInstrukcje(new Wypisz(
-                new Dodawanie(new Stala(50), new Zmienna('a'))
-                )
-        );
-        b1.dodajDeklaracjeLubProcedure(p1);
-        Deklaracja d1 = new Deklaracja('c', new Stala(13));
-        b1.dodajDeklaracjeLubProcedure(d1);
-        b1.dodajInstrukcje(new WywolanieProcedury("wypisz", List.of(new Zmienna('c'))));
-        testProc.wykonaj(b1, true);
+        Blok b1 = new BudowniczyBlokow()
+                .dodajDeklaracje('a', Stala.of(13))
+                .zbuduj();
     }
 }
