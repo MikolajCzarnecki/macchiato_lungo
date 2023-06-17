@@ -8,6 +8,10 @@ public class DeklaracjaProcedury extends InstrukcjaDeklaracyjna{
     Procedura zadeklarowanaProcedura;
     public DeklaracjaProcedury(String nazwa, List<Character> argumenty, List<Instrukcja> instrukcje) {
         super();
+        this.instrukcje = new LinkedList<Instrukcja>();
+        for (int i = 0; i < instrukcje.size(); i++) {
+            this.instrukcje.add(instrukcje.get(i));
+        }
         this.czyDobrzeOpisana = true;
         for (int i = 0; i < argumenty.size(); i++) {
             for (int j = i + 1; j < argumenty.size(); j++) {
@@ -18,7 +22,6 @@ public class DeklaracjaProcedury extends InstrukcjaDeklaracyjna{
         }
         this.nazwa = nazwa;
         this.argumenty = argumenty;
-        this.instrukcje = instrukcje;
     }
 
     public void dodajInstrukcje(Instrukcja doDodania) {this.instrukcje.add(doDodania);}

@@ -43,4 +43,9 @@ public class BudowniczyBlokow {
         this.glownyBlok.dodajInstrukcje(new WywolanieProcedury(nazwa, argumenty));
         return this;
     }
+
+    public BudowniczyBlokow dodajBlok(Blok blok) {
+        this.glownyBlok.dodajInstrukcje(blok);
+        return this;
+    }
 }

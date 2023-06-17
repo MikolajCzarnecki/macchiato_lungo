@@ -46,8 +46,39 @@ public class Main {
 //        program1.wykonaj(b1, true);
 //    }
         Macchiato testProc = new Macchiato();
-        Blok b1 = new BudowniczyBlokow()
-                .dodajDeklaracje('a', Stala.of(13))
+//        Blok b1 = new BudowniczyBlokow()
+//                .dodajDeklaracje('a', Stala.of(13))
+//                .dodajDeklaracjeProcedury("dodaj50", List.of('c'),
+//                        new BudowniczyBlokow()
+//                                .dodajWypisanie(Dodawanie.of(Zmienna.of('c'), Stala.of(50)))
+//                                .zbuduj()
+//                )
+//                .dodajWywolanieProcedury("dodaj50", List.of(Zmienna.of('a')))
+//                .zbuduj();
+        Blok b2 = new BudowniczyBlokow()
+                .dodajDeklaracje('x', Stala.of(101))
+                .dodajDeklaracje('y', Stala.of(1))
+                .dodajDeklaracjeProcedury("out", List.of('a'),
+                        new BudowniczyBlokow()
+                                .dodajWypisanie(
+                                        Dodawanie.of(
+                                            Zmienna.of('a'), Zmienna.of('x'))
+                                        )
+                                .zbuduj()
+                )
+                .dodajPrzypisanie('x', Odejmowanie.of(
+                        Zmienna.of('x') , Zmienna.of('y')
+                        )
+                )
+                .dodajWywolanieProcedury("out", List.of(Zmienna.of('x')))
+                .dodajWywolanieProcedury("out", List.of(Stala.of(100)))
+                .dodajBlok(
+                        new BudowniczyBlokow()
+                                .dodajDeklaracje('x', Stala.of(10))
+                                .dodajWywolanieProcedury("out", List.of(Stala.of(100)))
+                                .zbuduj()
+                )
                 .zbuduj();
+        testProc.wykonaj(b2, false);
     }
 }
