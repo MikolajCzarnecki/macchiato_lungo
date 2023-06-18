@@ -79,6 +79,6 @@ public class Main {
                                 .zbuduj()
                 )
                 .zbuduj();
-        testProc.wykonaj(b2, false);
+        testProc.wykonaj(b2, true);
     }
 }
