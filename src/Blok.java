@@ -90,7 +90,6 @@ public class Blok extends InstrukcjaBlokowa{
                 odpluskwiacz.oflaguj(this.instrukcje.get(i));
                 i++;
             } catch (RuntimeException e) {
-                System.out.println(e.getMessage());
                 if (this.getBlokWyzej() != null) throw new RuntimeException("");
                 if (!this.getProgram().getCzyBlad()) {
                     System.out.println(e.getMessage());
